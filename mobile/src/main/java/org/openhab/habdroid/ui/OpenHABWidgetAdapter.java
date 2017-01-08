@@ -481,8 +481,6 @@ public class OpenHABWidgetAdapter extends ArrayAdapter<OpenHABWidget> {
    		break;
     	case TYPE_CHART:
     		MySmartImageView chartImage = (MySmartImageView)widgetView.findViewById(R.id.chartimage);
-    		//Always clear the drawable so no images from recycled views appear
-    		chartImage.setImageDrawable(null);
     		OpenHABItem chartItem = openHABWidget.getItem();
     		Random random = new Random();
     		String chartUrl = "";
@@ -492,9 +490,9 @@ public class OpenHABWidgetAdapter extends ArrayAdapter<OpenHABWidget> {
 	    					"&period=" + openHABWidget.getPeriod() + "&random=" +
 	    					String.valueOf(random.nextInt());
 	    		} else {
-                    chartUrl = openHABBaseUrl + "chart?items=" + chartItem.getName() +
-                            "&period=" + openHABWidget.getPeriod() + "&random=" +
-                            String.valueOf(random.nextInt());
+                    		chartUrl = openHABBaseUrl + "chart?items=" + chartItem.getName() +
+                            			"&period=" + openHABWidget.getPeriod() + "&random=" +
+                            			String.valueOf(random.nextInt());
                 }
                 if (openHABWidget.getService() != null && openHABWidget.getService().length() > 0) {
                     chartUrl += "&service=" + openHABWidget.getService();
